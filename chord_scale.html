@@ -98,127 +98,144 @@ Root:
 Scale:
 <form>
 <select id="scale" onchange="change_scale()">
-<option value="0"></option>
+<option value="non_scale"></option>
 <optgroup label="for M7">
-<option value="1" selected>Major</option>
-<option value="2">Lydian</option>
+<option value="major" selected>Major</option>
+<option value="lydian">Lydian</option>
 <optgroup label="for 7th">
-<option value="3">Mixolydian</option>
-<option value="13">Lydian 7h</option>
-<option value="14">Altered</option>
-<option value="16">Harmonic Minor P5</option>
-<option value="15">Com.Diminished</option>
-<option value="10">Wholetone</option>
+<option value="mixolydian">Mixolydian</option>
+<option value="lydian7th">Lydian 7h</option>
+<option value="altered">Altered</option>
+<option value="harmonic_p5">Harmonic Minor P5</option>
+<option value="comdiminished">Com.Diminished</option>
+<option value="wholetone">Wholetone</option>
 <optgroup label="for minor">
-<option value="4">Minor</option>
-<option value="5">Dorian</option>
-<option value="6">Phrygian</option>
-<option value="7">Locrian</option>
-<option value="8">Melodic Minor</option>
-<option value="9">Harmonic Minor</option>
+<option value="minor">Minor</option>
+<option value="dorian">Dorian</option>
+<option value="phrygian">Phrygian</option>
+<option value="melodicminor">Melodic Minor</option>
+<option value="harmonicminor">Harmonic Minor</option>
+<optgroup label="for minor b5">
+<option value="locrian">Locrian</option>
+<option value="locrian_2">Locrian#2</option>
 <optgroup label="other">
-<option value="11">Diminished</option>
-<option value="12">Blues</option>
+<option value="diminished">Diminished</option>
+<option value="blues">Blues</option>
 </select>
 </form>
 
 Chord:
 <form>
 <select id="chord" onchange="change_chord()">
-<option value="0" selected></option>
+<option value="non_chord" selected></option>
 <optgroup label="Triads">
-<option value="5">Major</option>
-<option value="6">m</option>
-<option value="7">aug</option>
-<option value="8">m-5</option>
-<option value="11">sus4</option>
+<option value="major">Major</option>
+<option value="minor">m</option>
+<option value="aug">aug</option>
+<option value="dim">m-5</option>
+<option value="sus4">sus4</option>
 <optgroup label="Seventh Chords">
-<option value="1">M7</option>
-<option value="2">7th</option>
-<option value="3">m7</option>
-<option value="4">m7-5</option>
-<option value="9">mM7</option>
-<option value="10">dim7</option>
-<option value="12">dimM7</option>
-<option value="13">aug7</option>
-<option value="14">augM7</option>
+<option value="major7th">M7</option>
+<option value="seventh">7th</option>
+<option value="minor7th">m7</option>
+<option value="minor7thb5">m7-5</option>
+<option value="minorM7">mM7</option>
+<option value="dim7">dim7</option>
+<option value="dimM7">dimM7</option>
+<option value="aug7">aug7</option>
+<option value="augM7">augM7</option>
 </select>
 </form>
 
-Chord and Scale:
+<p id="c">Chord and Scale:</p>
 <form>
 <select id="chord_scale" onchange="change_chord_scale()">
 <option value="0" selected></option>
 <optgroup label="for M7">
-<option value="1">Major</option>
-<option value="2">Lydian</option>
+<option value="major">Major</option>
+<option value="lydian">Lydian</option>
 <optgroup label="for 7th">
-<option value="3">Mixolydian</option>
-<option value="13">Lydian 7h</option>
-<option value="14">Altered</option>
-<option value="16">Harmonic Minor P5</option>
-<option value="15">Com.Diminished</option>
-<option value="10">Wholetone</option>
+<option value="mixolydian">Mixolydian</option>
+<option value="lydian7th">Lydian 7th</option>
+<option value="altered">Altered</option>
+<option value="harmonic_p5">Harmonic Minor P5</option>
+<option value="comdiminished">Com.Diminished</option>
+<option value="wholetone">Wholetone</option>
 <optgroup label="for minor 7th">
-<option value="4">Minor</option>
-<option value="5">Dorian</option>
-<option value="6">Phrygian</option>
+<option value="minor">Minor</option>
+<option value="dorian">Dorian</option>
+<option value="phrygian">Phrygian</option>
+<optgroup label="for minor 7th b5">
+<option value="locrian">Locrian</option>
+<option value="locrian_2">Locrian#2</option>
+
 </select>
 </form>
-
-
 
 <script>
     var id=["#C1","#Db1","#D1","#Eb1","#E1","#F1","#Gb1","#G1","#Ab1","#A1","#Bb1","#B1",
             "#C2","#Db2","#D2","#Eb2","#E2","#F2","#Gb2","#G2","#Ab2","#A2","#Bb2","#B2","#C3"];
-    //var major=[0,2,4,5,7,9,11,12];
-    //var scale=[major];
     var root=0;
-    var scale_num=1;
-    var chord_num=0;
-    
-    var lydian=[0,2,4,6,7,9,11,12];
-    var mixolydian=[0,2,4,5,7,9,10,12];
-    var major=[0,2,4,5,7,9,11,12];
-    var minor=[0,2,3,5,7,8,10,12];
-    var dorian=[0,2,3,5,7,9,10,12];
-    var phrygian=[0,1,3,5,7,8,10,12];
-    var locrian=[0,1,3,5,6,8,10,12];
-    var melodicminor=[0,2,3,5,7,9,11,12];
-    var harmonicminor=[0,2,3,5,7,8,11,12];
-    var wholetone=[0,2,4,6,8,10,12];
-    var diminished=[0,2,3,5,6,8,9,11,12];
-    var blues=[0,3,5,6,7,10,12];
-    var lydian7th=[0,2,4,6,7,9,10,12];
-    var altered=[0,1,3,4,6,8,10,12];
-    var comdiminished=[0,1,3,4,6,7,9,10,12];
-    var harmonic_p5=[0,1,4,5,7,8,10,12];
+    var scale_num="major";
+    var chord_num="non_chord";
+    var scale;
+    scale.non_scale=[];
+    scale.lydian=[0,2,4,6,7,9,11,12];
+    scale.mixolydian=[0,2,4,5,7,9,10,12];
+    scale.major=[0,2,4,5,7,9,11,12];
+    scale.minor=[0,2,3,5,7,8,10,12];
+    scale.dorian=[0,2,3,5,7,9,10,12];
+    scale.phrygian=[0,1,3,5,7,8,10,12];
+    scale.locrian=[0,1,3,5,6,8,10,12];
+    scale.locrian_2=[0,2,3,5,6,8,10,12];
+    scale.melodicminor=[0,2,3,5,7,9,11,12];
+    scale.harmonicminor=[0,2,3,5,7,8,11,12];
+    scale.wholetone=[0,2,4,6,8,10,12];
+    scale.diminished=[0,2,3,5,6,8,9,11,12];
+    scale.blues=[0,3,5,6,7,10,12];
+    scale.lydian7th=[0,2,4,6,7,9,10,12];
+    scale.altered=[0,1,3,4,6,8,10,12];
+    scale.comdiminished=[0,1,3,4,6,7,9,10,12];
+    scale.harmonic_p5=[0,1,4,5,7,8,10,12];
 
-    var non_chord=[];
-    var majar7th=[0,4,7,11];
-    var seventh=[0,4,7,10];
-    var seventh2=[0,4,10];
-    var minor7th=[0,3,7,10];
-    var minorM7=[0,3,7,11];
-    var minor7thb5=[0,3,6,10];
-    var major_chord=[0,4,7];
-    var minor_chord=[0,3,7];
-    var aug=[0,4,8];
-    var dim=[0,3,6];
-    var dim7=[0,3,6,9];
-    var sus4=[0,5,7];
-    var dimM7=[0,3,6,11];
-    var aug7=[0,4,8,10];
-    var augM7=[0,4,8,11];
+    var chord;
+    chord.non_chord=[];
+    chord.major7th=[0,4,7,11];
+    chord.seventh=[0,4,7,10];
+    chord.seventh2=[0,4,10];
+    chord.minor7th=[0,3,7,10];
+    chord.minorM7=[0,3,7,11];
+    chord.minor7thb5=[0,3,6,10];
+    chord.major=[0,4,7];
+    chord.minor=[0,3,7];
+    chord.aug=[0,4,8];
+    chord.dim=[0,3,6];
+    chord.dim7=[0,3,6,9];
+    chord.sus4=[0,5,7];
+    chord.dimM7=[0,3,6,11];
+    chord.aug7=[0,4,8,10];
+    chord.augM7=[0,4,8,11];
+     
+    var chord_scale;
     
-    var scale=[non_chord,major,lydian,mixolydian,minor,dorian,phrygian,locrian,melodicminor,harmonicminor,wholetone,
-                diminished,blues,lydian7th,altered,comdiminished,harmonic_p5];
-                
-    var chord=[non_chord,majar7th,seventh,minor7th,minor7thb5,major_chord,minor_chord,aug,dim,minorM7,dim7,sus4,dimM7,aug7,augM7,seventh2];   
-    
-    var chord_scale=[0,1,1,2,3,3,3,2,2,2,15,2,2,2,15,2,2,2,2,2,2,2,2,2,2,2,2,2,2];
-    
+    chord_scale.major="major7th";
+    chord_scale.lydian="major7th";
+    chord_scale.mixolydian="seventh";
+    chord_scale.lydian7th="seventh";
+    chord_scale.altered="seventh2";
+    chord_scale.mixolydian="seventh";
+    chord_scale.harmonic_p5="seventh";
+    chord_scale.comdiminished="seventh2";
+    chord_scale.wholetone="seventh2";
+    chord_scale.minor="minor7th";
+    chord_scale.dorian="minor7th";
+    chord_scale.phrygian="minor7th";
+    chord_scale.locrian="minor7thb5";
+    chord_scale.locrian_2="minor7thb5";
+        
     var oct=0;
+    
+    //$("#z").html('<option value="2">7th</option>',"after");
     
     function scale_show(){
         for(var n=0;n<25;n++){
@@ -244,30 +261,29 @@ Chord and Scale:
         scale_show();    
     }
     function change_scale(){
-        scale_num=Number($("#scale").val());
+        scale_num=$("#scale").val();
         //console.log(root);
-        chord_num=0;
-        $("#chord").val("0");
-        $("#chord_scale").val("0");
+        chord_num="non_chord";
+        $("#chord").val("non_chord");
+        $("#chord_scale").val("non_scale");
         oct=0;
         scale_show();    
     }
     function change_chord(){
-        chord_num=Number($("#chord").val());
-        //console.log(chord_num);
-        scale_num=0;
-        $("#scale").val("0");
-        $("#chord_scale").val("0")
+        chord_num=$("#chord").val();
+        scale_num="non_scale";
+        $("#scale").val("non_scale");
+        $("#chord_scale").val("non_scale")
         oct=0;
         scale_show();    
     }
     function change_chord_scale(){
-        var num=Number($("#chord_scale").val());
+        //var num=Number($("#chord_scale").val());
         //console.log(chord_num);
-        scale_num=num;
-        chord_num=chord_scale[num];
-        $("#chord").val("0");
-        $("#scale").val("0");
+        scale_num=$("#chord_scale").val();
+        chord_num=chord_scale[scale_num];
+        $("#chord").val("non_chord");
+        $("#scale").val("non_scale");
         oct=1;
         scale_show();    
     }
