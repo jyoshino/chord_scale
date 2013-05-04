@@ -4,7 +4,7 @@
 </head>
 
 <body>
-<h2>Chord & Scale</h2>
+<h2>Chords & Scales</h2>
 
 <svg width="16cm" height="4cm" viewBox="0 0 200 50">
 
@@ -109,6 +109,7 @@ Scale:
 <option value="harmonic_p5">Harmonic Minor P5</option>
 <option value="comdiminished">Com.Diminished</option>
 <option value="wholetone">Wholetone</option>
+<option value="mixolydianb6">Mixolydian b6</option>
 <optgroup label="for minor">
 <option value="minor">Minor</option>
 <option value="dorian">Dorian</option>
@@ -118,6 +119,9 @@ Scale:
 <optgroup label="for minor b5">
 <option value="locrian">Locrian</option>
 <option value="locrian_2">Locrian#2</option>
+<optgroup label="Pentatonic">
+<option value="penta">Major Pentatonic</option>
+<option value="minorpenta">Minor Pentatonic</option>
 <optgroup label="other">
 <option value="diminished">Diminished</option>
 <option value="blues">Blues</option>
@@ -140,6 +144,7 @@ Chord:
 <option value="minor7th">m7</option>
 <option value="minor7thb5">m7-5</option>
 <option value="minorM7">mM7</option>
+<option value="seventhsus4">7sus4</option>
 <option value="dim7">dim7</option>
 <option value="dimM7">dimM7</option>
 <option value="aug7">aug7</option>
@@ -161,6 +166,7 @@ Chord:
 <option value="harmonic_p5">Harmonic Minor P5</option>
 <option value="comdiminished">Com.Diminished</option>
 <option value="wholetone">Wholetone</option>
+<option value="mixolydianb6">Mixolydian b6</option>
 <optgroup label="for minor 7th">
 <option value="minor">Minor</option>
 <option value="dorian">Dorian</option>
@@ -178,10 +184,11 @@ Chord:
     var root=0;
     var scale_num="major";
     var chord_num="non_chord";
-    var scale;
+    var scale={};
     scale.non_scale=[];
     scale.lydian=[0,2,4,6,7,9,11,12];
     scale.mixolydian=[0,2,4,5,7,9,10,12];
+    scale.mixolydianb6=[0,2,4,5,7,8,10,12];
     scale.major=[0,2,4,5,7,9,11,12];
     scale.minor=[0,2,3,5,7,8,10,12];
     scale.dorian=[0,2,3,5,7,9,10,12];
@@ -197,12 +204,15 @@ Chord:
     scale.altered=[0,1,3,4,6,8,10,12];
     scale.comdiminished=[0,1,3,4,6,7,9,10,12];
     scale.harmonic_p5=[0,1,4,5,7,8,10,12];
+    scale.penta=[0,2,4,7,9,12];
+    scale.minorpenta=[0,3,5,7,10,12];
 
-    var chord;
+    var chord={};
     chord.non_chord=[];
     chord.major7th=[0,4,7,11];
     chord.seventh=[0,4,7,10];
     chord.seventh2=[0,4,10];
+    chord.seventhsus4=[0,5,7,10];
     chord.minor7th=[0,3,7,10];
     chord.minorM7=[0,3,7,11];
     chord.minor7thb5=[0,3,6,10];
@@ -216,7 +226,7 @@ Chord:
     chord.aug7=[0,4,8,10];
     chord.augM7=[0,4,8,11];
      
-    var chord_scale;
+    var chord_scale={};
     
     chord_scale.major="major7th";
     chord_scale.lydian="major7th";
@@ -224,6 +234,7 @@ Chord:
     chord_scale.lydian7th="seventh";
     chord_scale.altered="seventh2";
     chord_scale.mixolydian="seventh";
+    chord_scale.mixolydianb6="seventh";
     chord_scale.harmonic_p5="seventh";
     chord_scale.comdiminished="seventh2";
     chord_scale.wholetone="seventh2";
